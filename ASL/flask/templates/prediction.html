@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-blue-100 bg-gradient-to-b from-blue-100 to-indigo-50 min-h-screen">
+    <div class="w-auto h-16 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 flex items-center justify-between rounded-2xl m-2 shadow-lg px-6 relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-full">
+            <h1 class="text-white text-2xl font-bold text-center">ASL Predictor</h1>
+        </div>
+        <a href="/" class="ml-auto bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-200 transition duration-300 z-10">Home</a>
+    </div>
+     <div class="pt-6 flex items-center justify-center animate__animated animate__fadeIn">
+        <div class="
+            mx-8
+            m-2
+            w-full
+            max-w-4xl
+            p-6
+            h-auto
+            bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400
+            border-2 border-blue-600
+            rounded-2xl
+            shadow-2xl
+            flex items-center justify-center flex-col">
+            <div class="text-white text-center text-3xl font-bold mb-6">
+                Upload an Image to Predict ASL Gesture
+            </div>  
+            <div class="m-4 flex flex-col items-center justify-center w-full">
+                <form id="prediction-form" enctype="multipart/form-data" action="/result" method="post" class="flex flex-col items-center justify-center w-full max-w-md">
+                    <!-- Styled file input -->
+                    <div class="relative w-full mb-6 group">
+                        <label class="flex flex-col items-center px-4 py-6 bg-white bg-opacity-80 text-blue-600 rounded-lg shadow-lg tracking-wide border-2 border-blue-300 cursor-pointer hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1">
+                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-base font-medium">Choose an image</span>
+                            <span class="text-sm text-blue-400 mt-1">or drag and drop</span>
+                            <input type="file" name="image" accept="image/*" class="hidden" required id="file-upload">
+                        </label>
+                        <div id="file-name" class="text-center text-white text-sm mt-2">No file selected</div>
+                    </div>
+                    <button type="submit" class="bg-white text-blue-600 font-bold mx-6 p-4 rounded-lg shadow-lg hover:bg-blue-50 hover:text-indigo-700 hover:shadow-xl transition-all duration-300 w-full bg-opacity-90 transform hover:-translate-y-1 animate__animated animate__pulse animate__infinite animate__slow">Predict ASL Gesture</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="pt-6 flex items-center justify-center animate__animated animate__fadeIn animate__delay-1s">
+        <div class="
+            mx-8
+            m-2
+            w-full
+            max-w-4xl
+            p-6
+            h-auto
+            bg-gradient-to-br from-indigo-100 via-blue-100 to-cyan-50
+            border-2 border-blue-300
+            rounded-lg
+            shadow-lg
+            flex flex-col items-center justify-center">
+            <div class="text-blue-700 text-xl font-semibold mb-4">
+                How to use:
+            </div>
+            <ol class="w-full space-y-4">
+                <li class="flex items-start bg-white bg-opacity-80 border-l-4 border-blue-400 rounded-md p-3 shadow">
+                    <span class="font-bold text-blue-600 mr-3">1.</span>
+                    <span class="text-gray-700">Click the "Choose an image" button to select an image of an ASL gesture.</span>
+                </li>
+                <li class="flex items-start bg-white bg-opacity-80 border-l-4 border-blue-400 rounded-md p-3 shadow">
+                    <span class="font-bold text-blue-600 mr-3">2.</span>
+                    <span class="text-gray-700">Click the "Predict ASL Gesture" button to submit the image for prediction.</span>
+                </li>
+                <li class="flex items-start bg-white bg-opacity-80 border-l-4 border-blue-400 rounded-md p-3 shadow">
+                    <span class="font-bold text-blue-600 mr-3">3.</span>
+                    <span class="text-gray-700">The prediction results will be displayed on the next page.</span>
+                </li>
+                <li class="flex items-start bg-white bg-opacity-80 border-l-4 border-blue-400 rounded-md p-3 shadow">
+                    <span class="font-bold text-blue-600 mr-3">4.</span>
+                    <span class="text-gray-700">Enjoy using the ASL Predictor to enhance your communication!</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <footer class="w-auto bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 text-white text-center p-5 rounded-t-lg shadow-lg mt-10 mx-2">
+        <div class="max-w-4xl mx-auto">
+            <p class="mb-2">© 2025 ASL Predictor. All rights reserved.</p>
+            <p class="text-sm text-blue-100">American Sign Language (ASL) is a complete, natural language that helps connect the deaf and hearing communities</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('file-upload').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file selected';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

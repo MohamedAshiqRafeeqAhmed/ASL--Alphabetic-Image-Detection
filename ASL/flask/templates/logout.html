@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Prediction Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-blue-100 bg-gradient-to-b from-blue-100 to-indigo-50 min-h-screen">
+    <div class="w-auto h-16 bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 flex items-center justify-between rounded-2xl m-2 shadow-lg px-6 relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-full">
+            <h1 class="text-white text-2xl font-bold text-center">ASL Predictor</h1>
+        </div>
+        <a href="/" class="ml-auto bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-200 transition duration-300 z-10">Home</a>
+    </div>
+    
+    <div class="pt-6 flex items-center justify-center animate__animated animate__fadeIn">
+        <div class="
+            mx-8
+            m-2
+            w-full
+            max-w-4xl
+            p-8
+            h-auto
+            bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400
+            border-2 border-blue-600
+            rounded-2xl
+            shadow-2xl
+            flex flex-col items-center justify-center">
+            <div class="text-white text-center text-3xl font-bold mb-6">
+                Prediction Result
+            </div>
+            
+            <!-- Improved prediction display -->
+            <div class="perspective-3d relative mb-8 mt-2 animate__animated animate__bounceIn animate__delay-1s">
+                <div class="relative transform transition-all duration-500 hover:scale-110">
+                    <div class="absolute inset-0 rounded-full bg-white bg-opacity-20 blur-lg animate-pulse"></div>
+                    <div class="text-white text-center text-9xl font-bold p-8 
+                        bg-gradient-to-br from-white via-blue-100 to-indigo-100 
+                        text-transparent bg-clip-text
+                        border-4 border-white rounded-full shadow-2xl 
+                        w-44 h-44 flex items-center justify-center
+                        relative z-10">
+                        {{pred}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-white text-center text-xl font-semibold mt-4 mb-8 px-6 py-3 bg-white bg-opacity-20 rounded-lg">
+                The ASL gesture you uploaded corresponds to the letter shown above
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-4 w-full max-w-md">
+                <a href="/prediction" class="bg-white text-blue-600 font-bold p-4 rounded-lg shadow-lg hover:bg-blue-50 hover:text-indigo-700 hover:shadow-xl transition-all duration-300 text-center flex-1 transform hover:-translate-y-1">
+                    Try Another Image
+                </a>
+                <a href="/" class="bg-blue-700 text-white font-bold p-4 rounded-lg shadow-lg hover:bg-blue-800 transition-all duration-300 text-center flex-1 transform hover:-translate-y-1">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="w-auto bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 text-white text-center p-5 rounded-t-lg shadow-lg mt-10 mx-2">
+        <div class="max-w-4xl mx-auto">
+            <p class="mb-2">© 2025 ASL Predictor. All rights reserved.</p>
+            <p class="text-sm text-blue-100">American Sign Language (ASL) is a complete, natural language that helps connect the deaf and hearing communities</p>
+        </div>
+    </footer>
+
+    <style>
+        .perspective-3d {
+            perspective: 1000px;
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+    </style>
+</body>
+</html>
